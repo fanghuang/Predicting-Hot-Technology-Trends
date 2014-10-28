@@ -7,4 +7,4 @@ cron.command('python ~/PHTT/stackoverflow.py', every='1.day', at='12:05')
 
 
 if __name__ == '__main__':
-    cron.run()
+    cron.run('write')
