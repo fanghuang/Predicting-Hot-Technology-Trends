@@ -7,7 +7,7 @@ def listTechnologies():
 
 	techs = []
 
-	for i in [x+1 for x in range(10)]:
+	for i in [x+1 for x in range(5)]:
 		payload = {
 			'order': 'desc', #Return the quantity of matching items, not the actual items
 			'sort': 'popular',
