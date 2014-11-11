@@ -22,7 +22,10 @@ def getNumQuestionsWithTagInLastDay(tag):
 
 	r = requests.get(question_url, params=payload)
 
-	return r.json()['total']
+	if 'total' in r.json():
+		return r.json()['total']
+	else:
+		return 0
 
 db_name = "stackoverflow"
 
@@ -40,6 +43,7 @@ doc = {
 
 for n in tech.listTechnologies():
 	doc[n] = getNumQuestionsWithTagInLastDay(n)
+	print "%s: %s" % (n, doc[n])
 
 db.save(doc)
 
