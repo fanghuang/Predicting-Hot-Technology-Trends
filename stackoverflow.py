@@ -27,7 +27,7 @@ def getNumQuestionsWithTagInLastDay(tag):
 	else:
 		return 0
 
-db_name = "stackoverflow"
+db_name = "stackoverflow_new"
 
 server = couchdb.Server()
 if db_name not in server:
@@ -38,12 +38,15 @@ today = date.today()
 yesterday = today - timedelta(days=1)
 
 doc = {
-	'date': yesterday.isoformat()
+	'date': yesterday.isoformat(),
+	'items': []
 }
 
 for n in tech.listTechnologies():
-	doc[n] = getNumQuestionsWithTagInLastDay(n)
-	print "%s: %s" % (n, doc[n])
+	doc['items'].append({
+			'name': n,
+			'count': getNumQuestionsWithTagInLastDay(n)
+		});
 
 db.save(doc)
 
