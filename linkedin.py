@@ -22,4 +22,4 @@ resp, content = client.request(url)
 
 root = ET.fromstring(content)
 
-print "Total: " + root[0].attrib["total"]
+print "Python Total: " + root[0].attrib["total"]
