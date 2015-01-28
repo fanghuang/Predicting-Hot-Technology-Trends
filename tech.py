@@ -16,6 +16,7 @@ def listTechnologies():
 			'pagesize': 100
 		}
 
+		r = requests.get(tag_url, params=payload)
 		
 		techs += [str(x['name']) for x in r.json()['items']]
 	
