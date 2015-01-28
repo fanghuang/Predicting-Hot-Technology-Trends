@@ -49,6 +49,7 @@ num_to_avg=3
 for degree in [x+1 for x in range(10)]:
 	regressions = {}
 	R_squared = {}
+	sum_diff = {}
 	count = 0
 	plt.figure()
 	for tech in data:
@@ -66,13 +67,10 @@ for degree in [x+1 for x in range(10)]:
 
 		p, r_sq = getPolyfit(x_sma,y_sma,degree)
 		regressions[tech] = p
-
-		yhat = p(x_sma)
-	        ybar = np.sum(y[1:-1])/len(y[1:-1])
-	        ssreg = np.sum((yhat-ybar)**2)
-	        sstot = np.sum((y[1:-1] - ybar)**2)
-
-		R_squared[tech] = ssreg/sstot
+		R_squared[tech] = r_sq		
+		
+		yhat = p(x)
+		sum_diff[tech] = np.sum((yhat - y)**2)
 
 		if count < numPlots and sum(p.coeffs) > 0:
 			xp = np.linspace(0, 60,61)
@@ -91,20 +89,23 @@ for degree in [x+1 for x in range(10)]:
 
 	r_sum = sum([R_squared[x] if not math.isnan(R_squared[x]) else 0 for x in R_squared])
 	num_none_zero = sum([1 if not math.isnan(R_squared[x]) else 0 for x in R_squared])
+	sum_sq_diffs = sum([sum_diff[x] if not math.isnan(sum_diff[x]) else 0 for x in sum_diff])
+	
 	print '--%d Degree Polyfit--' % degree
 	print 'There are %d non-zero regressions, and %d total regressions' % (num_none_zero, len(R_squared))
 	print 'Sum R^2: %f  Avg: %f' % (r_sum, r_sum/float(num_none_zero))
+	print 'Sum of squared diffs between Polyfit and orig data: %f' % sum_sq_diffs
 
 	## Calculate First Derivatives on Last Day
-	last_day = len(y)-1
-	first_deriv = []
-	for tech in regressions:
-		p = regressions[tech]
-		deriv = p.deriv()
-		first_deriv.append( (deriv(last_day), tech))
+	#last_day = len(y)-1
+	#first_deriv = []
+	#for tech in regressions:
+	#	p = regressions[tech]
+	#	deriv = p.deriv()
+	#	first_deriv.append( (deriv(last_day), tech))
 
-	first_deriv.sort(reverse=True)
-	print 'Top 10 Techs by first Deriv:'
-	for d, tech in first_deriv[:10]:
-		print '%s: %f' % (tech, d) 
-	print ''
+	#first_deriv.sort(reverse=True)
+	#print 'Top 10 Techs by first Deriv:'
+	#for d, tech in first_deriv[:10]:
+	#	print '%s: %f' % (tech, d) 
+	#print ''
