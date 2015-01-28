@@ -85,5 +85,4 @@ print content
 # db.save(doc)
 
 
-
-
+print "Python Total: " + root[0].attrib["total"]
