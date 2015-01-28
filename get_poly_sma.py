@@ -43,13 +43,14 @@ for doc in db:
 		date = datetime.strptime(doc_obj['date'], "%Y-%m-%d")
 		data[name].append( (date, tech['count']))
 
-regressions = {}
-R_squared = {}
-count = 0
 numPlots = 10
 #degree = 3
 num_to_avg=3
 for degree in [x+1 for x in range(10)]:
+	regressions = {}
+	R_squared = {}
+	count = 0
+	plt.figure()
 	for tech in data:
 		d = data[tech]
 		d.sort()
@@ -86,7 +87,7 @@ for degree in [x+1 for x in range(10)]:
 	#print data
 	#print len(y)
 	plt.ylim(-50,150)
-	plt.savefig('figure.png')
+	plt.savefig('figure-%d.png'%degree)
 
 	r_sum = sum([R_squared[x] if not math.isnan(R_squared[x]) else 0 for x in R_squared])
 	num_none_zero = sum([1 if not math.isnan(R_squared[x]) else 0 for x in R_squared])
@@ -95,15 +96,15 @@ for degree in [x+1 for x in range(10)]:
 	print 'Sum R^2: %f  Avg: %f' % (r_sum, r_sum/float(num_none_zero))
 
 	## Calculate First Derivatives on Last Day
-	# last_day = len(y)-1
-	# first_deriv = []
-	# for tech in regressions:
-	# 	p = regressions[tech]
-	# 	deriv = p.deriv()
-	# 	first_deriv.append( (deriv(last_day), tech))
+	last_day = len(y)-1
+	first_deriv = []
+	for tech in regressions:
+		p = regressions[tech]
+		deriv = p.deriv()
+		first_deriv.append( (deriv(last_day), tech))
 
-	# first_deriv.sort(reverse=True)
-	# print 'Top 10 Techs by first Deriv:'
-	# for d, tech in first_deriv[:10]:
-	# 	print '%s: %f' % (tech, d) 
-
+	first_deriv.sort(reverse=True)
+	print 'Top 10 Techs by first Deriv:'
+	for d, tech in first_deriv[:10]:
+		print '%s: %f' % (tech, d) 
+	print ''
