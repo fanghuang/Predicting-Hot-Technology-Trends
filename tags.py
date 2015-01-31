@@ -6,7 +6,7 @@ from datetime import date, timedelta
 page = 1
 pagesize = 100
 has_more = True
-url = 'https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow&filter=!9YdnSQVoS'
+url = 'https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow&filter=!bMMRSq0xzCuaKt'
 
 server = couchdb.Server()
 #db = server.create('tags')
@@ -14,10 +14,14 @@ db = server['tags']
 lists = []
 while (has_more) :
 
-        payload = {'page':page, 'pagesize':pagesize}
+        payload = {
+                'page':page,
+                'pagesize':pagesize,
+                'key':'XGgeLjmonD8zytJD18S3ug(('
+                        }
         r = requests.get(url, params=payload)
         r = r.json()
-
+        #print r
         print page
 
         lists = lists + r["items"]
@@ -30,10 +34,10 @@ while (has_more) :
 
 
 today = date.today()
-yesterday = today - timedelta(days=1)
+#yesterday = today - timedelta(days=1)
 
 doc = {
-        'date': yesterday.isoformat(),
+        'date': today.isoformat(),
         'items': lists
 }
 
