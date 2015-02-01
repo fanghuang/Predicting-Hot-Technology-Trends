@@ -16,4 +16,4 @@ r = requests.get(url, params=payload)
 print r.url
 r = r.json()
 print r
-print r['total'],r['quota_remaining']
+print 'total:', r['total'],'quota_remaining:', r['quota_remaining']
