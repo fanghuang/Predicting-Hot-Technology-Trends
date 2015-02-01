@@ -9,11 +9,11 @@ firstdate = date(2015, 1, 1)
 epoch = date(1970,1,1)
 
 server = couchdb.Server()
-db = server.create('questions')
+#db = server.create('questions')
 tagdb = server['tags']
 tags = tagdb['a2fa8c775de9bc7d97ea22c5a9135649']['items']
 
-#db = server['stackexchange']
+db = server['questions']
 #tags = ['javascript','java','c','python','swift']
 
 for i in range(12):
@@ -38,6 +38,7 @@ for i in range(12):
 		r = r.json()
 		#print r
 		total = r['total']
+		print 'quota_remaining:', r['quota_remaining']
 		#print tagname
 		lists.append({
 				'name':tagname,
