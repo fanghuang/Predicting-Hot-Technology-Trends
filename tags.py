@@ -27,6 +27,7 @@ while (has_more) :
         lists = lists + r["items"]
         has_more = r['has_more']
 
+        #if page == 20:
         if page == 5:
                 has_more = False
 
