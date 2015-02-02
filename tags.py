@@ -8,6 +8,7 @@ pagesize = 100
 has_more = True
 url = 'https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow&filter=!bMMRSq0xzCuaKt'
 
+#server = couchdb.Server('http://localhost:9000')
 server = couchdb.Server()
 #db = server.create('tags')
 db = server['tags']
