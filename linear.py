@@ -28,3 +28,19 @@ plt.plot(x, lr.predict(x[:, np.newaxis]), 'b-')
 plt.legend(('Data', 'Linear Fit'), loc='lower right')
 plt.title('Linear regression')
 plt.savefig('fig.png')
+
+"""
+testing purpose
+"""
+
+tmp = ['java', 'python','c']
+for t in tmp:
+	print t
+	tlist = []
+	for i in db:
+		for j in db[i]['items']:
+			if j['name']['name'] == t:
+				tlist.append(j['total'])
+
+	print tlist[::-1]
+	n = len(tlist)
