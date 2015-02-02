@@ -40,7 +40,7 @@ for tagname in tags:
 				})
 	print tagname['name'], total
 	#easily hit hrottle limit
-	if tmp == 2:
+	if tmp == 10:
 		break
 	tmp += 1
 	
