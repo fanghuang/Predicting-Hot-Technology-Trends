@@ -44,3 +44,7 @@ for t in tmp:
 
 	print tlist[::-1]
 	n = len(tlist)
+
+
+	A = {'Name1':34, 'Name2': 12, 'Name6': 46}
+print sorted(A, key=A.get)
