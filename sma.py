@@ -17,9 +17,7 @@ tags = tagdb['a2fa8c775de9bc7d97ea22c5a9135649']['items']
 
 db = server['questions']
 
-x = []
-for i in range(1,61):
-	x.append(i)
+x = range(1,61)
 
 counter = 0
 for tagname in tags:
