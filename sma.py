@@ -21,27 +21,26 @@ x = []
 for i in range(1,61):
 	x.append(i)
 
-
+counter = 0
 for tagname in tags:
+	counter+=1
 	tmplist = []
 	for i in db:
 		for j in db[i]['items']:
 			if j['name']['name'] == tagname['name']:
 				tmplist.append(j['total'])
-	print len(tmplist)
+
 	print tagname['name'], len(tmplist[::-1])
 	sma2 = movingaverage(tmplist[::-1], 2)
 	sma3 = movingaverage(tmplist[::-1], 3)
 	sma5 = movingaverage(tmplist[::-1], 5)
-	print 'sma 2', len(sma2)
-	print 'sma 3', len(sma3)
-	print 'sma 5', len(sma5)
 
+	fig = plt.figure()
 	plt.plot(x, tmplist[::-1], 'c.', markersize=12)
 	plt.plot(x[len(x)-len(sma2):], sma2, 'r-', markersize=12)
 	plt.plot(x[len(x)-len(sma3):], sma3, 'b-', markersize=12)
 	plt.plot(x[len(x)-len(sma5):], sma5, 'g-', markersize=12)
-	#plt.gca().add_collection(lc)
+
 	plt.legend((tagname['name'], 'SMA2', 'SMA3', 'SMA5'), loc='lower right')
 	plt.title('Simple Moving Average')
-	plt.savefig(tagname['name'])
+	plt.savefig(str(counter))
