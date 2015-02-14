@@ -46,7 +46,29 @@ def countTrendsTimesPercentIncrease(data, t):
 	if data[count][1] == 0:
 		increase_percent = 0
 	else:
-		increase_percent = float(data[0][1])/data[count][1]
+		increase_percent = (float(data[0][1])/data[count][1]) - 1.0
 
-	print data[0][1], data[count][1], increase_percent
+	# print data[0][1], data[count][1], increase_percent
 	return count*direction*increase_percent
+
+
+def percentIncreaseInLastTrend(data, t):
+	# We only care about this techs data. And we care about the data in revervse date order
+	data = data[t][::-1]
+
+	if (data[0][1] - data[1][1]) > 0:
+		direction = 1
+	else:
+		direction = -1
+
+	count = 0
+	while (data[count][1] - data[count+1][1]) * direction > 0:
+		count+=1
+
+	if data[count][1] == 0:
+		increase_percent = 0
+	else:
+		increase_percent = (float(data[0][1])/data[count][1]) - 1.0
+
+	# print data[0][1], data[count][1], increase_percent
+	return increase_percent

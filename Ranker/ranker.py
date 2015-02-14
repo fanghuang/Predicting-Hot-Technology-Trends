@@ -15,9 +15,23 @@ class Ranker:
 			doc_obj = db[doc]
 			for tech in doc_obj['items']:
 				name = tech['name']
-				date = utils.stringToDate(doc_obj['date'])
+
 				if name not in data:
 					data[name] = []
+
+				# Tests for different formats different dbs used
+				if 'count' in tech:
+					total = tech['count']
+					date_str = doc_obj['date']
+				elif 'total' in tech:
+					total = tech['total']
+					date_str = doc_obj['fromdate']
+				else:
+					print "ERROR: Neither count or total was found in data"
+					exit()
+
+				date = utils.stringToDate(date_str)
+
 				data[name].append( (date, tech['count']))
 
 
