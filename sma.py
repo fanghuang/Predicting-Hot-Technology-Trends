@@ -9,9 +9,7 @@ def movingaverage(values, window):
 	smas = np.convolve(values, weights, 'valid')
 	return smas
 
-
-server = couchdb.Server('http://localhost:9000')
-#server = couchdb.Server()
+server = couchdb.Server()
 tagdb = server['tags']
 tags = tagdb['a2fa8c775de9bc7d97ea22c5a9135649']['items']
 
