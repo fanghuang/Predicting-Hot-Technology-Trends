@@ -19,16 +19,15 @@ db = server['questions']
 
 x = range(1,61)
 
-counter = 0
 for tagname in tags:
-	counter+=1
+	name = tagname['name']
 	tmplist = []
 	for i in db:
 		for j in db[i]['items']:
-			if j['name']['name'] == tagname['name']:
+			if j['name']['name'] == name:
 				tmplist.append(j['total'])
 
-	print tagname['name'], len(tmplist[::-1])
+	print name, len(tmplist[::-1])
 	sma2 = movingaverage(tmplist[::-1], 2)
 	sma3 = movingaverage(tmplist[::-1], 3)
 	sma5 = movingaverage(tmplist[::-1], 5)
@@ -39,6 +38,6 @@ for tagname in tags:
 	plt.plot(x[len(x)-len(sma3):], sma3, 'b-', markersize=12)
 	plt.plot(x[len(x)-len(sma5):], sma5, 'g-', markersize=12)
 
-	plt.legend((tagname['name'], 'SMA2', 'SMA3', 'SMA5'), loc='lower right')
-	plt.title('Simple Moving Average')
-	plt.savefig(str(counter))
+	plt.legend((name, 'SMA2', 'SMA3', 'SMA5'), loc=2)
+	plt.title(name+' Simple Moving Average')
+	plt.savefig(name.replace('.',''))
