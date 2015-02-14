@@ -40,7 +40,7 @@ def mongoDBImporterFangSchema(db_name):
 	for doc in db:
 		doc_obj = db[doc]
 		for tech in doc_obj['items']:
-			name = tech['name']
+			name = tech['name']['name']
 
 			if name not in data:
 				data[name] = []
@@ -50,7 +50,7 @@ def mongoDBImporterFangSchema(db_name):
 
 			date = utils.stringToDate(date_str)
 
-			data[name].append( (date, tech['count']))
+			data[name].append( (date, total))
 
 
 	# Sort the data list for each technology because Mongo is unsorted
