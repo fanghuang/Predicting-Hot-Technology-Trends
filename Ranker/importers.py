@@ -1,4 +1,5 @@
 import couchdb
+import utils
 
 
 def mongoDBImporterCoreySchema(db_name):
