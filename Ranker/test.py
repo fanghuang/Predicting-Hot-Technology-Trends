@@ -1,7 +1,9 @@
 import ranker
 import scorers
+import importers
 
-r = ranker.Ranker("stackoverflow_new")
+data = importers.mongoDBImporterCoreySchema("stackoverflow_new")
+r = ranker.Ranker(data)
 
 # print r.testScore(scorers.countTrendsTimesPercentIncrease)
 print r.rank(scorers.countTrendsTimesPercentIncrease)
