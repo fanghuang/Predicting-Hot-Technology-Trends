@@ -49,7 +49,7 @@ def countTrendsTimesPercentIncrease(data, t):
 		increase_percent = (float(data[0][1])/data[count][1]) - 1.0
 
 	# print data[0][1], data[count][1], increase_percent
-	return count*direction*increase_percent
+	return count*increase_percent
 
 
 def percentIncreaseInLastTrend(data, t):
