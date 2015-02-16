@@ -56,5 +56,5 @@ def mongoDBImporterFangSchema(db_name):
 	# Sort the data list for each technology because Mongo is unsorted
 	for t in data:
 		data[t].sort()
-
+	
 	return data
