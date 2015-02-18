@@ -27,13 +27,13 @@ def pageGenerator(result, num):
 	''')
 
 	html = tmpl.render(
-		variable = 'SMA Top & Bottom '+str(num)+' Trends',
+		variable = 'SMA Top & Bottom '+str(num)+' Technology Trends',
 		number = num,
 		top = toplist,
 		bottom = bottomlist
 	)
 	print html
-	file = open("index.html", "w")
+	file = open("Template/index.html", "w")
 
 	file.write(html)
 
