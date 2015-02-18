@@ -6,8 +6,8 @@ def expoGenerator(result, num):
 	length = len(result)
 	toplist = result[:num]
 	bottomlist = result[::-1][:num]
-	toplist = [(toplist[x-1][0],x) for x in range(1,num+1)]
-	bottomlist = [(bottomlist[x][0],length-x) for x in range(0,num)]
+	toplist = [(toplist[x-1],x) for x in range(1,num+1)]
+	bottomlist = [(bottomlist[x],length-x) for x in range(0,num)]
 
 	env = Environment(loader=FileSystemLoader('Template'))
 	template = env.get_template('/expotmpl.html')
