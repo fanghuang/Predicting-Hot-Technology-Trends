@@ -2,13 +2,11 @@ import requests, json
 import couchdb
 from datetime import date, timedelta
 
-
 page = 1
 pagesize = 100
 has_more = True
 url = 'https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow&filter=!bMMRSq0xzCuaKt'
 
-#server = couchdb.Server('http://localhost:9000')
 server = couchdb.Server()
 #db = server.create('tags')
 db = server['tags']
@@ -28,12 +26,11 @@ while (has_more) :
         lists = lists + r["items"]
         has_more = r['has_more']
 
-        #if page == 20:
-        if page == 5:
+        if page == 20:
+        #if page == 5:
                 has_more = False
 
         page += 1
-
 
 today = date.today()
 #yesterday = today - timedelta(days=1)
