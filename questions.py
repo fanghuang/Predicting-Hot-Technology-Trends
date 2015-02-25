@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 url = 'https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!9YdnSQVoS'
 
-firstdate = date(2010, 4, 1)
+firstdate = date(2011, 12, 1)
 epoch = date(1970,1,1)
 
 server = couchdb.Server()
@@ -36,8 +36,8 @@ for i in range(5):
 		r = requests.get(url, params=payload)
 		r = r.json()
 		#print r
-		total = r['total']
 		print 'quota_remaining:', r['quota_remaining']
+		total = r['total']
 		#print tagname
 		lists.append({
 				'name':tagname,
