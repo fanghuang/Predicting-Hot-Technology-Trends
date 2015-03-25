@@ -1,8 +1,8 @@
-import ranker
-import scorers
-import importers
-import htmltmpl
-import expo
+import Ranker.ranker
+import Ranker.scorers
+import Ranker.importers
+import Report.htmltmpl
+import Report.expo
 
 data = importers.mongoDBImporterFangSchema("questions")
 r = ranker.Ranker(data)
