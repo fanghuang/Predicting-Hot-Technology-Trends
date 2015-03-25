@@ -1,0 +1,37 @@
+---
+- hosts: all
+  remote_user: vagrant
+  tasks:
+  - name: Install list of packages
+    apt: name={{item}} state=installed update_cache=yes
+    with_items:
+    - gcc
+    - curl
+    - python-setuptools
+    - python-pip
+    - python-matplotlib
+    - python-numpy
+    - python-scipy
+    - couchdb
+    sudo: yes
+  - name: PIP install requirement.txt
+    pip: requirements=/vagrant/requirement.txt
+    sudo: yes
+  - name: Run couchdb
+    shell: sudo -i -u couchdb couchdb -b
+  - name: Run shedule.py to set Cron Jobs
+    shell: python /vagrant/schedule.py
+
+
+#### Demo Code Below:
+  # - name: ensure apache is at the latest version
+  #   yum: pkg=httpd state=latest
+  # - name: write the apache config file
+  #   template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+  #   notify:
+  #   - restart apache
+  # - name: ensure apache is running (and enable it at boot)
+  #   service: name=httpd state=started enabled=yes
+  # handlers:
+  #   - name: restart apache
+  #     service: name=httpd state=restarted
