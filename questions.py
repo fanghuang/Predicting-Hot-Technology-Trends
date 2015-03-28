@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 url = 'https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!9YdnSQVoS'
 
-firstdate = date(2011, 12, 1)
+firstdate = date(2014, 8, 1)
 epoch = date(1970,1,1)
 
 server = couchdb.Server()
