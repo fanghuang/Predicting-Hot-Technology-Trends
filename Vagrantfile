@@ -72,5 +72,8 @@ Vagrant.configure(2) do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
   end
+
+  # Comment out the next line to stop the port forwarding that Vagrant does
+  config.vm.network :forwarded_port, host: 4567, guest: 80
   
 end
