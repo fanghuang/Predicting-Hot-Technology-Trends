@@ -17,3 +17,7 @@ python /vagrant/generateReport.py
 ```
 
 This will generate the report that we demoed for the expo. It will take a second to run, as it also is creating all the images that may be required for the report. The generated report and images are put in the `/vagrant/generated_report` folder.
+
+# Serving Reports
+
+Currently nginx is set up to serve the `/vagrant/generated_report` directory, on port 80. With Vagrant, we have also forwarded port 4567 on the host machine to port 80 on the VM. So once you generate a report you should be able to go to `http://localhost:4567/expo.html` on the host machine and view the report.
