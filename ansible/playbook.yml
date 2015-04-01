@@ -43,7 +43,7 @@
   roles:
   - role: nginx
     nginx_http_params:
-      - sendfile "on"
+      - sendfile "off"
       - access_log "/var/log/nginx/access.log"
     nginx_sites:
       reports:
