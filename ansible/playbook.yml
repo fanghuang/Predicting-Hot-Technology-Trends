@@ -1,6 +1,9 @@
 ---
 - hosts: all
   remote_user: vagrant
+  pre_tasks:
+  - apt: update_cache=yes
+    sudo: yes
   tasks:
   - name: Install list of packages
     apt: name={{item}} state=installed update_cache=yes
