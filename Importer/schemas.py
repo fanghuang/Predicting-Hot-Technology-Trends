@@ -1,11 +1,10 @@
-import couchdb
 import utils
+import couchdb
 
 
-def mongoDBImporterCoreySchema(db_name):
+
+def importerCoreySchema(db):
 	# Get the data from Mongo and transform it
-	server = couchdb.Server()
-	db = server[db_name]
 	data = {}
 
 	for doc in db:
@@ -31,10 +30,8 @@ def mongoDBImporterCoreySchema(db_name):
 	return data
 
 
-def mongoDBImporterFangSchema(db_name):
+def importerFangSchema(db):
 	# Get the data from Mongo and transform it
-	server = couchdb.Server()
-	db = server[db_name]
 	data = {}
 
 	for doc in db:

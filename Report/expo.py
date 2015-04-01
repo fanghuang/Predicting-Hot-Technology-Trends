@@ -9,7 +9,7 @@ def expoGenerator(result, num):
 	toplist = [(toplist[x-1],x) for x in range(1,num+1)]
 	bottomlist = [(bottomlist[x],length-x) for x in range(0,num)]
 
-	env = Environment(loader=FileSystemLoader('Template'))
+	env = Environment(loader=FileSystemLoader('/vagrant/Report/Template'))
 	template = env.get_template('/expotmpl.html')
 	html = template.render(
 		variable = 'SMA Top & Bottom '+str(num)+' Technology Trends',
@@ -18,9 +18,9 @@ def expoGenerator(result, num):
 		bottom = bottomlist
 		)
 
-	print html
+	# print html
 
-	file = open("Template/expo.html", "w")
+	file = open("/vagrant/generated_report/expo.html", "w")
 
 	file.write(html)
 

@@ -1,14 +1,25 @@
-import Ranker.ranker
-import Ranker.scorers
-import Ranker.importers
-import Report.htmltmpl
-import Report.expo
+from Importer import importer
 
-data = importers.mongoDBImporterFangSchema("questions")
+
+from Ranker import ranker
+from Ranker import scorers
+
+from Report import htmltmpl
+from Report import expo
+
+from Grapher import grapher
+
+#Import the data from the stackoverflow_monthly db
+dataImporter = importer.Importer()
+data = dataImporter.getDataFromDB("stackoverflow_monthly")
+
+# Create a graph for each technology
+g = grapher.Grapher()
+g.generateSMAImages(data)
+
+# Create the Ranker object and rank the techs
 r = ranker.Ranker(data)
+ranked = r.rank(scorers.countTrendsTimesPercentIncrease)
 
-# print r.testScore(scorers.countTrendsTimesPercentIncrease)
-print r.rank(scorers.countTrendsTimesPercentIncrease)
-data = r.rank(scorers.countTrendsTimesPercentIncrease)
-#htmltmpl.pageGenerator(data,10)
-expo.expoGenerator(data,10)
+# Generate the expo report
+expo.expoGenerator(ranked,10)

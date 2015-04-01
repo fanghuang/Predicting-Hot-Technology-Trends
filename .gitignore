@@ -1,3 +1,6 @@
 *.png
 *.pyc
 .vagrant
+*.json-nodesign
+*.json.design
+imgs
