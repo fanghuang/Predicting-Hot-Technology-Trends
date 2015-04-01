@@ -70,7 +70,7 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "ansible/playbook.yml"
   end
 
   # Comment out the next line to stop the port forwarding that Vagrant does
