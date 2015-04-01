@@ -3,6 +3,8 @@ Predicting-Hot-Technology-Trends
 
 # Install
 *Must have Vagrant and Ansible set up on the machine to create the VM.* 
+[Vagrant Install](https://docs.vagrantup.com/v2/installation/)
+[Ansible Install](http://docs.ansible.com/intro_installation.html)
 
 1. Clone the repo
 2. Run `vagrant up` to create the VM
