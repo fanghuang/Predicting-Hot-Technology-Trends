@@ -41,6 +41,9 @@
     command: /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_monthly_2000 -f /vagrant/Dumps/question2000Dump.json
   - name: Restore backup of tag
     command: /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d tag -f /vagrant/Dumps/tagDump.json
+
+  - name: Create static images directory
+    command: mkdir -p /vagrant/generated_report/imgs/
   roles:
   - role: nginx
     nginx_http_params:
