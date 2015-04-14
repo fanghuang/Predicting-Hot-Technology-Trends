@@ -24,22 +24,23 @@
     shell: sudo -i -u couchdb couchdb -b
   - name: Run shedule.py to set Cron Jobs
     shell: python /vagrant/schedule.py
+
   - name: Add stackoverflow_daily db
-    shell: curl -X PUT http://127.0.0.1:5984/stackoverflow_daily
+    command: curl -X PUT http://127.0.0.1:5984/stackoverflow_daily
   - name: Add stackoverflow_monthly db
-    shell: curl -X PUT http://127.0.0.1:5984/stackoverflow_monthly
+    command: curl -X PUT http://127.0.0.1:5984/stackoverflow_monthly
   - name: Add stackoverflow_monthly_2000 db
-    shell: curl -X PUT http://127.0.0.1:5984/stackoverflow_monthly_2000
+    command: curl -X PUT http://127.0.0.1:5984/stackoverflow_monthly_2000
   - name: Add tag db
-    shell: curl -X PUT http://127.0.0.1:5984/tag
+    command: curl -X PUT http://127.0.0.1:5984/tag
   - name: Restore backup of stackoverflow_daily
-    shell: bash /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_daily -f /vagrant/Dumps/dailyDump.json
+    command: /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_daily -f /vagrant/Dumps/dailyDump.json
   - name: Restore backup of stackoverflow_monthly
-    shell: bash /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_monthly -f /vagrant/Dumps/questionDump.json
+    command: /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_monthly -f /vagrant/Dumps/questionDump.json
   - name: Restore backup of stackoverflow_monthly_2000
-    shell: bash /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_monthly_2000 -f /vagrant/Dumps/question2000Dump.json
+    command: /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d stackoverflow_monthly_2000 -f /vagrant/Dumps/question2000Dump.json
   - name: Restore backup of tag
-    shell: bash /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d tag -f /vagrant/Dumps/tagDump.json
+    command: /vagrant/couchdb-dump/couchdb-backup.sh -r -H 127.0.0.1 -d tag -f /vagrant/Dumps/tagDump.json
   roles:
   - role: nginx
     nginx_http_params:
