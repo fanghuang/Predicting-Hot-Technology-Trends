@@ -16,7 +16,7 @@ Predicting-Hot-Technology-Trends
 python /vagrant/generateReport.py
 ```
 
-This will generate the report that we demoed for the expo. It will take a second to run, as it also is creating all the images that may be required for the report. The generated report and images are put in the `/vagrant/generated_report` folder.
+This will generate the report that we demoed for the expo. It could take a few minutes to run, as it also is creating all the images that may be required for the report. The generated report and images are put in the `/vagrant/generated_report` folder.
 
 # Serving Reports
 
