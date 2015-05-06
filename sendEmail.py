@@ -14,11 +14,7 @@ from premailer import transform
 
 #Import the data from the stackoverflow_monthly db
 dataImporter = importer.Importer()
-data = dataImporter.getDataFromDB("stackoverflow_monthly")
-
-# Create a graph for each technology
-g = grapher.Grapher()
-g.generateSMAImages(data)
+data = dataImporter.getDataFromDB("stackoverflow_monthly_2000")
 
 # Create the Ranker object and rank the techs
 r = ranker.Ranker(data)
@@ -27,6 +23,10 @@ ranked = r.rank(scorers.countTrendsTimesPercentIncrease)
 # Generate the expo report
 (html, images) = email.generateEmail(ranked, 5)
 html = transform(html)
+
+# Create a graph for each technology
+g = grapher.Grapher()
+g.generateSMAImages(data, images)
 
 
 # Send an HTML email with an embedded image and a plain text message for
