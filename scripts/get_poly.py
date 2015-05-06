@@ -20,7 +20,7 @@ def getPolyfit(x,y, degree=3):
 
 	return (p, ssreg/sstot)
 
-db_name = "stackoverflow_new"
+db_name = "stackoverflow_daily"
 
 server = couchdb.Server()
 
