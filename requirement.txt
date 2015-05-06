@@ -8,3 +8,4 @@ python-dateutil
 jinja2
 Pillow
 enum34
+premailer

@@ -10,12 +10,15 @@
     with_items:
     - gcc
     - curl
+    - python-dev
     - python-setuptools
     - python-pip
     - python-matplotlib
     - python-numpy
     - python-scipy
     - couchdb
+    - libxml2-dev
+    - libxslt1-dev
     sudo: yes
   - name: PIP install requirement.txt
     pip: requirements=/vagrant/requirement.txt
