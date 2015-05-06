@@ -25,11 +25,11 @@ for i in range(5):
 	lists = []
 	print t1, t2
 
-	for tagname in tags:		
+	for tagname in tags:
 		#tagname = i['name']
 		payload = {
-			'fromdate':d1, 
-			'todate':d2, 
+			'fromdate':d1,
+			'todate':d2,
 			'tagged':tagname['name'],
 			'key':'XGgeLjmonD8zytJD18S3ug(('
 				}
@@ -52,5 +52,3 @@ for i in range(5):
 	}
 
 	db.save(doc)
-
-	

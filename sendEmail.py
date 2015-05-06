@@ -38,11 +38,11 @@ from email.MIMEImage import MIMEImage
 
 # Define these once; use them twice!
 strFrom = 'PredictingHotTechTrends@gmail.com'
-strTo = 'coreyja@gmail.com, alexancj@rose-hulman.edu'
+strTo = 'krutha@avalonconsult.com,risdenk@avalonconsult.com,applebaumw@avalonconsult.com'
 
 # Create the root message and fill in the from, to, and subject headers
 msgRoot = MIMEMultipart('related')
-msgRoot['Subject'] = 'Weekly Hot Technology Report'
+msgRoot['Subject'] = 'Monthly Hot Technology Report'
 msgRoot['From'] = strFrom
 msgRoot['To'] = strTo
 msgRoot.preamble = 'This is a multi-part message in MIME format.'
